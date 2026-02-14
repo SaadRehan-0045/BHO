@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best of Home Care - Top Contact Bar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'slide-down': 'slideDown 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Top bar background */
+        .top-bar-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        }
+        
+        .dark .top-bar-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+        }
+        
+        /* Contact info hover effects */
+        .contact-info:hover {
+            transform: translateX(3px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    
+  
+
+    <!-- Top Contact Bar -->
+    <div class="top-bar-bg text-white animate-slide-down">
+        <!-- Desktop Version -->
+        <div class="hidden lg:block">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-center py-3">
+                    <!-- Contact Info - Centered -->
+                    <div class="flex items-center space-x-8">
+                        <!-- Phone -->
+                        <a href="tel:1300513309" class="contact-info flex items-center hover:text-blue-200 transition-all duration-200 group">
+                            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2 group-hover:bg-white/30">
+                                <i class="ri-phone-line text-sm"></i>
+                            </div>
+                            <span class="font-medium">1300 513 309</span>
+                            <i class="ri-external-link-line ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        
+                        <!-- Email -->
+                        <a href="mailto:admin@bestofhomecare.com.au" class="contact-info flex items-center hover:text-blue-200 transition-all duration-200 group">
+                            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2 group-hover:bg-white/30">
+                                <i class="ri-mail-line text-sm"></i>
+                            </div>
+                            <span class="font-medium">admin@bestofhomecare.com.au</span>
+                            <i class="ri-external-link-line ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        
+                        <!-- Location -->
+                        <div class="contact-info flex items-center group">
+                            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2 group-hover:bg-white/30">
+                                <i class="ri-map-pin-line text-sm"></i>
+                            </div>
+                            <span class="font-medium">1/43 Rainier Crescent, Clyde North VIC 3978</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Version - Only 3 Icons -->
+        <div class="lg:hidden">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex items-center justify-center space-x-6">
+                    <!-- Phone Icon -->
+                    <a href="tel:1300513309" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300">
+                        <i class="ri-phone-line"></i>
+                    </a>
+                    
+                    <!-- Location Icon -->
+                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                        <i class="ri-map-pin-line"></i>
+                    </div>
+                    
+                    <!-- Email Icon -->
+                    <a href="mailto:admin@bestofhomecare.com.au" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300">
+                        <i class="ri-mail-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+   
+
+    <script>
+        // Theme functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        
+        // Check for saved theme preference or use default
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        // Apply theme on page load
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            updateThemeUI('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateThemeUI('light');
+        }
+        
+        // Update theme UI elements
+        function updateThemeUI(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'ri-sun-line mr-2';
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.className = 'ri-moon-line mr-2';
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+        
+        // Toggle theme function
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateThemeUI('light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeUI('dark');
+            }
+        }
+        
+        // Add event listener for theme toggle
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+        });
+
+        // Add click-to-copy functionality for phone numbers
+        document.querySelectorAll('a[href^="tel:"]').forEach(phoneLink => {
+            phoneLink.addEventListener('click', (e) => {
+                const phoneNumber = phoneLink.href.replace('tel:', '');
+                const feedback = document.createElement('div');
+                feedback.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in';
+                feedback.textContent = `Copied ${phoneNumber} to clipboard`;
+                
+                navigator.clipboard.writeText(phoneNumber).then(() => {
+                    document.body.appendChild(feedback);
+                    setTimeout(() => {
+                        feedback.remove();
+                    }, 2000);
+                });
+            });
+        });
+
+        // Add hover effects for contact info on desktop
+        document.querySelectorAll('.contact-info').forEach(info => {
+            info.addEventListener('mouseenter', () => {
+                const icon = info.querySelector('.ri-external-link-line');
+                if (icon) {
+                    icon.style.opacity = '1';
+                }
+            });
+            
+            info.addEventListener('mouseleave', () => {
+                const icon = info.querySelector('.ri-external-link-line');
+                if (icon) {
+                    icon.style.opacity = '0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
