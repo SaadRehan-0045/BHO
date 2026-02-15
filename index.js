@@ -29,7 +29,7 @@ app.get('/benny', (req, res) => {
 ///////////////////////////// Homepage/Landing route
 // 1. Homecare route
 app.get('/homecare', (req, res) => {
-    res.render('Disability Care/Homecare.ejs', {
+    res.render('Disability Care/HomeCare.ejs', {
         title: 'Homecare Services',
         message: 'Professional in-home care and support'
     });
